@@ -119,7 +119,7 @@ impl GitScanner {
         let repo_option = self.repo.as_ref(); //borrowing magic here!
         let repo = repo_option.unwrap();
         let mut revwalk = repo.revwalk().unwrap();
-        revwalk.push_head(glob.unwrap_or_else(|| "*")).unwrap(); //easy mode: iterate over all the commits
+        revwalk.push_head().unwrap(); //easy mode: iterate over all the commits
 
         // take our "--since_commit" input (hash id) and convert it to a date and time
         // and build our revwalk with a filter for commits >= that time. This isn't a perfect
